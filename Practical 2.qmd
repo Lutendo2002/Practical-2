@@ -3,7 +3,20 @@ title: "Practical 2"
 
 ---
 
+
+pkg_vec <- c("ggplot2", "palmerpenguins", "ggthemes")
+for (x in pkg_vec) {
+  if (!requireNamespace(x, quietly = TRUE)) {
+    install.packages(x, dependencies = TRUE)
+  }
+  # if you want to programmatically attach
+  # libraries, this is the way to to do it
+  library(x, character.only = TRUE)
+}
 projrsimple::projr_init()
+library(ggplot2)
+library(dplyr)
+
 ## Quarto
 
 Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
@@ -19,6 +32,23 @@ y = sin(x/10) + rnorm(100,mean=0, sd=0.2)
 
 customLowess <- function(x,y,f) {
   
+  
 }
+```
+
+```{r}
+f <- 0.4
+built_in <- lowess(x,y,iter=0)
+built_in
+```
+
+
+```{r}
+## Plot
+f <- 0.1
+data_frame <- as.data.frame(built_in)
+ggplot(data = data_frame,mapping = aes(x, y), header = "Plot of Lowess Smoothing") + geom_point() + geom_smooth(method= "lm")
+
+
 ```
 
