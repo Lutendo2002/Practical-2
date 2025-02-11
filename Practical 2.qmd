@@ -1,9 +1,12 @@
 ---
 title: "Practical 2"
-
+format: html 
 ---
 
 
+```{r}
+#| echo =FALSE
+#| 
 pkg_vec <- c("ggplot2", "palmerpenguins", "ggthemes")
 for (x in pkg_vec) {
   if (!requireNamespace(x, quietly = TRUE)) {
@@ -13,25 +16,40 @@ for (x in pkg_vec) {
   # libraries, this is the way to to do it
   library(x, character.only = TRUE)
 }
+
 projrsimple::projr_init()
 library(ggplot2)
 library(dplyr)
 
-## Quarto
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
-
-```{r}
-
-set.seed(1)
-x <- 1:100
-y = sin(x/10) + rnorm(100,mean=0, sd=0.2)
 ```
 
+Question 1: Set your seed 
 ```{r}
 
+#|echo: TRUE
+## Setting the seed to 1
+set.seed(1) 
+
+## Creating a numeric vector called x and the function y using the sine wave
+x <- 1:100
+y <-  sin(x/10) + rnorm(100 ,mean=0, sd=0.2)
+```
+
+
+Question 2: CustomLowess
+```{r}
+#| echo: TRUE
 customLowess <- function(x,y,f) {
   
+  ##distance between the x values
+  num <- length(x)
+  k <- f*n
+  
+  for (i in 1:num) {
+    distance_x = abs(x-x[i])
+    
+  }
   
 }
 ```
